@@ -54,9 +54,7 @@ function setGame(e){
     console.log("> "+corrects);
     if(corrects.length === wordList[0].word.length){
 
-        let links = `Next step : <br> <a href="https://drive.google.com/file/d/1TjHMHZSTTu35EfHZc7R3FnoSNbRzKcFy/view?usp=sharing">maxome_old_data.zip </a>`;
-        links += `<br>(ou <a href="https://drive.google.com/file/d/1K7WuEBeajrAp3sYY4sc01-KSNmfUdM5m/view?usp=sharing">maxome_files.zip</a> si le fichier est trop lourd)`;
-        links += `<br>(ou rien sinon c'est pg -srx)`;
+        let links = `Next step : <br> <a href="https://drive.google.com/file/d/1V_FwedADahkAat9dbUSGPj-7xR6CI0B3/view?usp=sharing">maxome_old_data.zip</a>`;
         result.innerHTML = links;
 
     }
