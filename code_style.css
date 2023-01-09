@@ -1,0 +1,126 @@
+/*Import font*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #581845;
+
+}
+
+.wrapper{
+    width: 430px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.wrapper h1{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    padding: 20px 25px;
+    border-bottom: 1px solid #ccc;
+}
+
+.wrapper .content{
+    margin: 25px 25px 35px;
+
+}
+
+.content .typing-input {
+    opacity: 0;
+    z-index: -999;
+    position: absolute;
+    
+}
+
+.content .inputs{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.inputs input{
+    height: 57px;
+    width: 56px;
+    margin: 4px;
+    color: #581845;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    background: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    border: 1px solid #b5b5b5;
+}
+
+.inputs input:first-child{
+    margin-left: 0px;
+}
+
+.content details{
+    margin: 20px 0 25px;
+}
+
+.details p {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.content .reset-btn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    padding: 15px 0;
+    background: #581845;
+    border-radius: 5px;
+
+}
+
+.hint {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.result {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Standard syntax */
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+  
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+  
+  .apply-shake {
+      animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  }
+  
+
