@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ///Checking for Matches
     //for row of Four
     function checkRowForFive() {
-      for (i = 0; i < 60; i ++) {
+      for (i = 0; i < 59; i ++) {
         let rowOfFive = [i, i+1, i+2, i+3, i+4]
         let decidedColor = squares[i].style.backgroundImage
         const isBlank = squares[i].style.backgroundImage === ''
@@ -122,13 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
   
     //for column of Four
       function checkColumnForFive() {
-        for (i = 0; i < 39; i ++) {
+        for (i = 0; i < 45; i ++) {
           let columnOfFive = [i, i+width, i+width*2, i+width*3, i+width*4]
           let decidedColor = squares[i].style.backgroundImage
           const isBlank = squares[i].style.backgroundImage === ''
     
           if(columnOfFive.every(index => squares[index].style.backgroundImage === decidedColor && !isBlank)) {
-            score += 4
+            score += 5
             scoreDisplay.innerHTML = score
             columnOfFive.forEach(index => {
             squares[index].style.backgroundImage = ''
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //for column of Four
       function checkColumnForFour() {
-        for (i = 0; i < 39; i ++) {
+        for (i = 0; i < 46; i ++) {
           let columnOfFour = [i, i+width, i+width*2, i+width*3]
           let decidedColor = squares[i].style.backgroundImage
           const isBlank = squares[i].style.backgroundImage === ''
