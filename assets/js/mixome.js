@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const candyColors = [
         'url(assets/img/emotes/emote_face_70.png)',
-        'url(assets/img/emotes/pp_dailymmu_deep_fired.png)',
-        'url(assets/img/emotes/emote_pog_70.png)',
+        'url(assets/img/emotes/pp_dailymmu_deep_fried.png)',
+        
         'url(assets/img/emotes/icon_pntChaine_leak_70.png)',
         'url(assets/img/emotes/moulaxome_70.png)'
       ]
