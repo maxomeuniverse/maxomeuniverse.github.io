@@ -8,9 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const candyColors = [
         'url(assets/img/emotes/emote_face_70.png)',
         'url(assets/img/emotes/pp_dailymmu_deep_fried.png)',
-        
         'url(assets/img/emotes/icon_pntChaine_leak_70.png)',
-        'url(assets/img/emotes/moulaxome_70.png)'
+        'url(assets/img/emotes/moulaxome_70.png)',
+        'url(assets/img/emotes/icon_pntChaine_video_70.png)',
+        'url(assets/img/emotes/maxome_crane_eye_70.png)',
+        'url(assets/img/emotes/puppa_70.png)',
+        'url(assets/img/emotes/toutou_70.png)'
       ]
     
     //create your board
@@ -84,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if(squares[i + width].style.backgroundImage === '') {
                 squares[i + width].style.backgroundImage = squares[i].style.backgroundImage
                 squares[i].style.backgroundImage = ''
+
                 const firstRow = [0, 1, 2, 3, 4, 5, 6, 7]
                 const isFirstRow = firstRow.includes(i)
                 if (isFirstRow && (squares[i].style.backgroundImage === '')) {
@@ -173,6 +177,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     checkColumnForThree()
+
+    score = 0
+    scoreDisplay.innerHTML = score
     
     // Checks carried out indefintely - Add Button to clear interval for best practise, or clear on game over/game won. If you have this indefinite check you can get rid of calling the check functions above.
     window.setInterval(function(){
