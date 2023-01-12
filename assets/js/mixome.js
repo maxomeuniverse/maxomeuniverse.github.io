@@ -101,6 +101,45 @@ document.addEventListener('DOMContentLoaded', () => {
     
     ///Checking for Matches
     //for row of Four
+    function checkRowForFive() {
+      for (i = 0; i < 60; i ++) {
+        let rowOfFive = [i, i+1, i+2, i+3, i+4]
+        let decidedColor = squares[i].style.backgroundImage
+        const isBlank = squares[i].style.backgroundImage === ''
+  
+        const notValid = [4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31, 36, 37, 38, 39, 44, 45, 46, 47, 52, 53, 54, 55]
+        if (notValid.includes(i)) continue
+  
+        if(rowOfFive.every(index => squares[index].style.backgroundImage === decidedColor && !isBlank)) {
+          score += 4
+          scoreDisplay.innerHTML = score
+          rowOfFive.forEach(index => {
+          squares[index].style.backgroundImage = ''
+          })
+        }
+      }
+    }
+    checkRowForFive()
+  
+    //for column of Four
+      function checkColumnForFive() {
+        for (i = 0; i < 39; i ++) {
+          let columnOfFive = [i, i+width, i+width*2, i+width*3, i+width*4]
+          let decidedColor = squares[i].style.backgroundImage
+          const isBlank = squares[i].style.backgroundImage === ''
+    
+          if(columnOfFive.every(index => squares[index].style.backgroundImage === decidedColor && !isBlank)) {
+            score += 4
+            scoreDisplay.innerHTML = score
+            columnOfFive.forEach(index => {
+            squares[index].style.backgroundImage = ''
+            })
+          }
+        }
+      }
+    checkColumnForFive()
+
+    //for row of Four
       function checkRowForFour() {
         for (i = 0; i < 60; i ++) {
           let rowOfFour = [i, i+1, i+2, i+3]
@@ -183,11 +222,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Checks carried out indefintely - Add Button to clear interval for best practise, or clear on game over/game won. If you have this indefinite check you can get rid of calling the check functions above.
     window.setInterval(function(){
-        checkRowForFour()
-        checkColumnForFour()
-        checkRowForThree()
-        checkColumnForThree()
-        moveIntoSquareBelow()
-      }, 100)
-    })
+      checkRowForFive()
+      checkColumnForFive()
+      checkRowForFour()
+      checkColumnForFour()
+      checkRowForThree()
+      checkColumnForThree()
+      moveIntoSquareBelow()
+    }, 100)
+})
     
