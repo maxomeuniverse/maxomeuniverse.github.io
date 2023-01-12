@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'url(assets/img/emotes/pp_dailymmu_deep_fried.png)',
         'url(assets/img/emotes/icon_pntChaine_leak_70.png)',
         'url(assets/img/emotes/moulaxome_70.png)',
-        'url(assets/img/emotes/icon_pntChaine_video_70.png)',
         'url(assets/img/emotes/maxome_crane_eye_70.png)',
         'url(assets/img/emotes/puppa_70.png)',
         'url(assets/img/emotes/toutou_70.png)'
