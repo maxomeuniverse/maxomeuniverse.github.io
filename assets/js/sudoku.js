@@ -6,35 +6,118 @@ var tileSelected = null;
 var errors = 0;
 
 var nbDigits = 6;
+var currentDifficulty = 0;
 
 var board = [
-    "--61-4",
-    "----2-",
-    "3-5-62",
-    "6-2---",
-    "453-16",
-    "261-4-"
+    [ // EASY
+        "21--3-",
+        "53-4--",
+        "--1---",
+        "--5216",
+        "46-1--",
+        "-5-36-"
+    ],
+    [
+        // MEDIUM
+        "-4----",
+        "-25---",
+        "---5--",
+        "--3-61",
+        "-3---5",
+        "---132",
+    ],
+    [ // HARD
+      "----6-",
+      "---4-1",
+      "5-1---",
+      "-3--2-",
+      "-1-3--",
+      "--2---",
+    ]
 ]
 
 var boardTruePlay = [
-    [3, 1, 4, 2, 5, 4], // Rows
-    [4, 2, 5, 1, 4, 3]  // Columns
+    [ // EASY
+        [3, 3, 1, 4, 3, 3], // Rows
+        [3, 4, 2, 4, 3, 1]  // Columns
+    ],
+    [
+        // MEDIUM
+        [1, 2, 1, 3, 2, 3], // Rows
+        [0, 3, 2, 2, 2, 3]
+    ],
+    [
+        // HARD
+        [1, 2, 2, 2, 2, 1], // Rows
+        [1, 2, 2, 2, 2, 1]  // Columns
+    ]
 ]
 
 var solution = [
-    "526134",
-    "134625",
-    "315462",
-    "642351",
-    "453216",
-    "261543"
+    [ // EASY
+        "214635",
+        "536421",
+        "621543",
+        "345216",
+        "463152",
+        "152364"
+    ],
+    [
+        // MEDIUM
+        "341256",
+        "625314",
+        "416523",
+        "253461",
+        "132645",
+        "564132",
+    ],
+    [
+        //HARD
+        "154263",
+        "263451",
+        "521634",
+        "436125",
+        "615342",
+        "342516",
+    ]
 ]
 
 //-------------------------------------------------------------------------------------
 // On Start Functions
 
 window.onload = function(){
+    loadDifficulty();
+    
+    setDifficultyButton();
     setGame();
+}
+
+function loadDifficulty(){
+    let urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams);
+
+    if(window.location.search == ""){ // If no parameters in the url
+        currentDifficulty = 0; // default on EASY
+        return; // stop here
+    }
+    
+    currentDifficulty = urlParams.get("dif"); // Get difficulty value from url parameters
+
+}
+
+function setDifficultyButton(){
+    let parent = document.getElementById("difficulty");
+    let easyButton = parent.querySelector("#easy");
+    let mediumButton = parent.querySelector("#medium");
+    let hardButton = parent.querySelector("#hard");
+
+    easyButton.addEventListener("click", function(event){updateDifficulty(0);});
+    mediumButton.addEventListener("click", function(event){updateDifficulty(1);});
+    hardButton.addEventListener("click", function(event){updateDifficulty(2);});
+}
+
+function updateDifficulty(newDifficulty){
+    window.open("https://maxomeuniverse.github.io/sudoku?dif="+newDifficulty, '_self');    
 }
 
 function setGame() {
@@ -59,10 +142,10 @@ function setGame() {
             let tile = document.createElement("div");
             tile.id = r.toString() + "-" + c.toString();
             
-            if(board[r][c] != "-"){ // If ...
-                // tile.innerText = board[r][c];
-                let imageElem = addEmoteImageElement(tile, board[r][c]);
-                let idElem = createIdTextElement(tile, board[r][c]);
+            if(board[currentDifficulty][r][c] != "-"){ // If ...
+                // tile.innerText = board[currentDifficulty][r][c];
+                let imageElem = addEmoteImageElement(tile, board[currentDifficulty][r][c]);
+                let idElem = createIdTextElement(tile, board[currentDifficulty][r][c]);
                 
                 idElem.classList.add("solution");                
                 tile.classList.add("tile-start");
@@ -124,9 +207,16 @@ function selectTile(){
         let r = parseInt(coords[0]);
         let c = parseInt(coords[1]);
 
-        if (solution[r][c] == numSelected.id){
-            boardTruePlay[0][r] += 1;
-            boardTruePlay[1][c] += 1;
+        if (solution[currentDifficulty][r][c] == numSelected.id){
+            // Update row solved
+            if(boardTruePlay[currentDifficulty][0][r] < nbDigits){
+                boardTruePlay[currentDifficulty][0][r] += 1;
+            }
+            // Update column solved
+            if( boardTruePlay[currentDifficulty][1][c] > nbDigits){                
+                boardTruePlay[currentDifficulty][1][c] += 1;
+            }
+            
             checkboardTruePlay();
         } else {
             errors += 1;
@@ -147,12 +237,12 @@ function checkboardTruePlay(){
     // Check validity
     for(let i = 0; i < nbDigits; i++){
         // Check row
-        if(boardTruePlay[0][i] == 6){
+        if(boardTruePlay[currentDifficulty][0][i] == 6){
             setTileValidity(i, 0);
         }
 
         // Check col
-        if(boardTruePlay[1][i] == 6){
+        if(boardTruePlay[currentDifficulty][1][i] == 6){
             setTileValidity(i, 1);
         }
     }

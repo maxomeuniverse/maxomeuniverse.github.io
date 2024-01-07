@@ -7,8 +7,21 @@ hr {
     width: 500px;
 }
 
+#difficulty{
+    align-content: center;
+}
+
+#difficulty > * {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 #errors {
-    color: coral;
+    color: red;
+}
+
+.errorsdiv {
+    color: red;
 }
 
 #board {
@@ -68,11 +81,11 @@ hr {
 }
 
 .horizontal-line {
-    border-bottom: 2px solid pink;
+    border-bottom: 2px solid black;
 }
 
 .vertical-line {
-    border-right: 2px solid pink;
+    border-right: 2px solid black;
 }
 
 .valid{
