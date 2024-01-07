@@ -218,7 +218,7 @@ function selectTile(){
                     boardTruePlay[currentDifficulty][0][r] += 1;
                 }
                 // Update column solved
-                if( boardTruePlay[currentDifficulty][1][c] > nbDigits){                
+                if( boardTruePlay[currentDifficulty][1][c] < nbDigits){                
                     boardTruePlay[currentDifficulty][1][c] += 1;
                 }
                 
