@@ -190,7 +190,7 @@ function selectTile(){
         digitId = getTileDigitId(this);
         
         // If the tile don't have to be changed (because i's the solution)
-        if(isSolutionTile(this)){ 
+        if(isSolutionTile(this) || isValidTile(this)){ 
             return; // do nothing
         } 
 
@@ -207,17 +207,23 @@ function selectTile(){
         let r = parseInt(coords[0]);
         let c = parseInt(coords[1]);
 
-        if (solution[currentDifficulty][r][c] == numSelected.id){
-            // Update row solved
-            if(boardTruePlay[currentDifficulty][0][r] < nbDigits){
-                boardTruePlay[currentDifficulty][0][r] += 1;
+        if (solution[currentDifficulty][r][c] == numSelected.id ){ 
+            if(!isCorrectTile(this)){ // Check solution and if not correct (means not already set as correct)
+
+                // Note that this tile is correct
+                this.classList.add("correct");
+                
+                // Update row solved
+                if(boardTruePlay[currentDifficulty][0][r] < nbDigits){
+                    boardTruePlay[currentDifficulty][0][r] += 1;
+                }
+                // Update column solved
+                if( boardTruePlay[currentDifficulty][1][c] > nbDigits){                
+                    boardTruePlay[currentDifficulty][1][c] += 1;
+                }
+                
+                checkboardTruePlay();
             }
-            // Update column solved
-            if( boardTruePlay[currentDifficulty][1][c] > nbDigits){                
-                boardTruePlay[currentDifficulty][1][c] += 1;
-            }
-            
-            checkboardTruePlay();
         } else {
             errors += 1;
             document.getElementById("errors").innerText = errors;
@@ -310,6 +316,14 @@ function isSolutionTile(elem){
     return elem.getElementsByClassName("info")[0].classList.contains("solution");
 }
 
+function isValidTile(elem){
+    return elem.classList.contains("valid");
+}
+
+function isCorrectTile(elem){
+    return elem.classList.contains("correct");
+}
+
 function getTileDigitId(elem){
     return elem.getElementsByClassName("info")[0].id;
 }
@@ -340,3 +354,5 @@ function getImagePath(id){
             return "";
     }
 }
+
+// Thanks to Kenny Yip Coding for inspiration / made by Maxome_
