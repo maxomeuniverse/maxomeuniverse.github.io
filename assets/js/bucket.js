@@ -1,4 +1,4 @@
-const B_SIZE = 66;
+const B_SIZE = 70;
 const HALF_B_SIZE = B_SIZE / 2;
 
 var basket; // player
@@ -91,7 +91,6 @@ function handleOrbs() {
 				// we've caught the orb
 
         score += 1;
-				basket.catch(orbs[i]);
         orbs.splice(i, 1);
       }
 
@@ -204,15 +203,6 @@ Basket.prototype.draw = function() {
 	endShape();
 };
 
-/**
- * updates the color of fluid within the basket
- */
-Basket.prototype.catch = function(ball) {
-
-	/* interpolate current color with Ball color */
-	var amount = ball.size * 0.01; // amount to add
-};
-
 // ##################################################################
 // ####   BALL                                                    ###
 // ##################################################################
@@ -259,12 +249,14 @@ function Ball(x, y, size, velocity) {
    */
   Ball.prototype.caughtBy = function(basket) {
   
-    var leftX = basket.position.x - HALF_B_SIZE; // left-most X
-    var rightX = basket.position.x + HALF_B_SIZE; // right-most X
+    var leftX = basket.position.x - HALF_B_SIZE*1.5; 
+    var rightX = basket.position.x + HALF_B_SIZE*1.5; 
   
-    var topY = basket.position.y + HALF_B_SIZE; // top-most Y
+    var topY = basket.position.y + HALF_B_SIZE; 
   
     return !(this.position.x < leftX || this.position.x > rightX ||
-      this.position.y < basket.position.y || this.position.y > topY);
+      this.position.y < (basket.position.y - HALF_B_SIZE) || this.position.y > topY);
   };
+
+// Thanks to Kaelinator for inspiration / made by Maxome_
   
