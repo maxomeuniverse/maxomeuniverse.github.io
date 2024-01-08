@@ -208,7 +208,7 @@ function selectTile(){
         let c = parseInt(coords[1]);
 
         if (solution[currentDifficulty][r][c] == numSelected.id ){ 
-            if(!isCorrectTile(this)){ // Check solution and if not correct (means not already set as correct)
+            // if(!isCorrectTile(this)){ // Check solution and if not correct (means not already set as correct)
 
                 // Note that this tile is correct
                 this.classList.add("correct");
@@ -223,7 +223,7 @@ function selectTile(){
                 }
                 
                 checkboardTruePlay();
-            }
+            // }
         } else {
             errors += 1;
             document.getElementById("errors").innerText = errors;
