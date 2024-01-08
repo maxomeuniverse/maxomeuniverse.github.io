@@ -146,7 +146,7 @@ function endGame() {
   textSize(60);
   noStroke();
   fill(255);
-  text("Ruined !\n Tu as perdu "+score+"£ :)", width / 2, height / 2);
+  text("Ruined !\n Tu as perdu \n"+score+"£ :)", width / 2, height / 2);
   score = "rien";
   drawScore();
 }
