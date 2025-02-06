@@ -1,41 +1,66 @@
 
-      (function ($) {"use strict";
-      
-      $(function () {
-        var header = $(".start-style");
-        $(window).scroll(function () {
-          var scroll = $(window).scrollTop();
-    
-          if (scroll >= 10) {
-            header.removeClass('start-style').addClass("scroll-on");
-          } else {
-            header.removeClass("scroll-on").addClass('start-style');
-          }
-        });
-      });
-    
-      //Animation
-    
-      $(document).ready(function () {
-        $('body.hero-anime').removeClass('hero-anime');
-      });
-    
-      //Menu On Hover
-    
-      $('body').on('mouseenter mouseleave', '.nav-item', function (e) {
-        if ($(window).width() > 750) {
-          var _d = $(e.target).closest('.nav-item');_d.addClass('show');
-          setTimeout(function () {
-            _d[_d.is(':hover') ? 'addClass' : 'removeClass']('show');
-          }, 1);
-        }
-      });
-    
-    
-    
-    })(jQuery);
+$('document').ready(function() {
+  $('#doctorSlideshow').owlCarousel({
+    nav: true,
+    dots: false,
+    navText: ["<span class='mai-arrow-back'></span>", "<span class='mai-arrow-forward'></span>"],
+    responsive: {
+      0: {
+        items: 1
+      },
+      576: {
+        items: 2
+      },
+      992: {
+        items: 3
+      }
+    }
+  });
+});
 
-// Blank Target External Links
-$(document.links).filter(function() {
-return this.hostname != window.location.hostname;
-}).attr('target', '_blank');
+$('document').ready(function() {
+  $("a[data-role='smoothscroll']").click(function(e) {
+    e.preventDefault();
+    
+    var position = $($(this).attr("href")).offset().top - nav_height;
+
+    $("body, html").animate({
+        scrollTop: position
+    }, 1000 );
+    return false;
+  });
+});
+
+$('document').ready(function() {
+  // Back to top
+  var backTop = $(".back-to-top");
+
+  $(window).scroll(function() {
+    if($(document).scrollTop() > 400) {
+      backTop.css('visibility', 'visible');
+    }
+    else if($(document).scrollTop() < 400) {
+      backTop.css('visibility', 'hidden');
+    }
+  });
+
+  backTop.click(function() {
+    $('html').animate({
+      scrollTop: 0
+    }, 1000);
+    return false;
+  });
+});
+
+
+$('document').ready(function() {
+  // Tooltips
+  $('[data-toggle="tooltip"]').tooltip();
+
+  // Popovers
+  $('[data-toggle="popover"]').popover();
+
+  // Page scroll animate
+  new WOW().init();
+});
+
