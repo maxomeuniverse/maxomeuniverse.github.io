@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0
     
     const candyColors = [
-        'url(assets/img/emotes/emote_face_70.png)',
-        'url(assets/img/emotes/pp_dailymmu_deep_fried.png)',
-        'url(assets/img/emotes/icon_pntChaine_leak_70.png)',
-        'url(assets/img/emotes/moulaxome_70.png)',
-        'url(assets/img/emotes/maxome_crane_eye_70.png)',
-        'url(assets/img/emotes/puppa_70.png)',
-        'url(assets/img/emotes/toutou_70.png)'
+        'url(/assets/img/emotes/emote_face_70.png)',
+        'url(/assets/img/emotes/pp_dailymmu_deep_fried.png)',
+        'url(/assets/img/emotes/icon_pntChaine_leak_70.png)',
+        'url(/assets/img/emotes/moulaxome_70.png)',
+        'url(/assets/img/emotes/maxome_crane_eye_70.png)',
+        'url(/assets/img/emotes/puppa_70.png)',
+        'url(/assets/img/emotes/toutou_70.png)'
       ]
     
     //create your board
